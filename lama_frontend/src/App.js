@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import LandingPage from './components/pages/LandingPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
-
+import AdminDashboard from './components/pages/UserMenu'
 
 import './App.css'
 
@@ -14,6 +14,7 @@ export default function App() {
                 <Routes>
                     <Route exact path="/" element={ <LandingPage/> } />
                     <Route path="/login" element={ <AdminLoginPage/> } />
+                    <Route path="/dashboard" element={ <AdminDashboard/> } />
                 </Routes>
                 <Footer />
             </div>

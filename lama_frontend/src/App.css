@@ -21,7 +21,8 @@ body {
     font-size: 1.2rem;
     transition: all .5s;
     cursor: pointer;
-    text-transform: capitalize
+    text-transform: capitalize;
+    white-space: nowrap
 }
 
 /***    Landing Page     ***/
@@ -124,20 +125,23 @@ footer p {
     font-size: .9rem
 }
 
-/***    Register Page     ***/
-#checkbox {
-    width: 1rem
+/***DashBoard***/
+.primary-button-userButton{
+    margin-top: 3rem;
+    margin-right: 1rem;
+    padding: .6rem;
+    width: 10rem;
+    background: #222;
+    border: none;
+    color: #fff;
+    font-size: 0.7rem;
+    transition: all .5s;
+    cursor: pointer;
+    text-transform: capitalize;
+    white-space: nowrap;
 }
 
-form span {
-    font-size: .8rem
-}
-
-#reset_pass_lbl {
-    float: left
-}
-
-/***    Home Page     ***/
-.home-page-title {
-    color: #222
+.dashboard{
+    background-color: #D9AFD9;
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
 }
