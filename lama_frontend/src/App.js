@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import LandingPage from './components/pages/LandingPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import AdminDashboard from './components/pages/UserMenu'
+import CustomerManagementPage from './components/pages/CustomerManagement'
 
 import './App.css'
 
@@ -15,6 +16,7 @@ export default function App() {
                     <Route exact path="/" element={ <LandingPage/> } />
                     <Route path="/login" element={ <AdminLoginPage/> } />
                     <Route path="/dashboard" element={ <AdminDashboard/> } />
+                    <Route path="/customermanagement" element={ <CustomerManagementPage/> } />
                 </Routes>
                 <Footer />
             </div>

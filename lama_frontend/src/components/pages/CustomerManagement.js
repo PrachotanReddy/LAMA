@@ -7,8 +7,10 @@ import '../../App.css'
 
 
 import "react-datepicker/dist/react-datepicker.css" ;
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
 import "bootstrap/dist/css/bootstrap.min.css" ;
+import Form from 'react-bootstrap/Form';
 
 export default function CustomerManagementPage () {
 
@@ -28,73 +30,59 @@ export default function CustomerManagementPage () {
 
 
                 <h2> Customer Management </h2>
-                <form action ="/home" >
+                <form action ="" >
                     <p>
                         <input type ="text" name ="employeeid" placeholder ='Employee Id' required />
                     </p>
                     <p>
                         <input type ="text" name ="employeename" placeholder ='Employee Name' required />
                     </p>
+                    <div className ="text-center m-5-auto selectbox" style = {{
+                display : 'flex' ,
+                alignItems : 'center' ,
+                justifyContent : 'center' ,
+                flexDirection : 'column'
+            }} >
+                        <Form.Select className='selectboxes'>
+
+                        <option value="" disabled selected>Department</option>
+                        {options. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
+
+                        </Form.Select>
 
 
+                        <Form.Select className='selectboxes'>
 
+                        <option value="" disabled selected>Gender</option>
+                        {gender. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
-                    <p> Department
+                        </Form.Select>
+                        <Form.Select className='selectboxes'>
 
+                        <option value="" disabled selected>Designation</option>
+                        {designation. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
-                        <select>
+                        </Form.Select>
+                    </div>
 
+                    <p style={{marginTop:".6rem"}}>
 
-                            {options. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
-
-                         </select>
-                    </p>
-
-
-                    <p> Gender
-
-
-                        <select>
-
-
-                            {gender. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
-
-                        </select>
-                    </p>
-                    <p> Designation
-
-
-                        <select>
-
-
-                            {designation. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
-
-                        </select>
-                    </p>
-
-
-                    <p>
-
-                        Date Of Birth
-                        <DatePicker
-
+                    <FloatingLabel controlId="floatingSelect" label="Date of Birth">
+                        <Form.Control type="date" name='date_of_birth'
                             calendarDate = {calendarDate}
                             locale = "en-US"
-
                         />
+                    </FloatingLabel>
 
                     </p>
 
                     <p>
-
-                        Date Of Joining
-                        <DatePicker
-
+                    <FloatingLabel controlId="floatingSelect" label="Date of Joining">
+                        <Form.Control type="date" name='date_of_joining'
                             calendarDate = {calendarDate}
                             locale = "en-US"
-
                         />
-
+                    </FloatingLabel>
                    </p>
 
 
