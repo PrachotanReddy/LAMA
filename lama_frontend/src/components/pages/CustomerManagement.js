@@ -31,18 +31,33 @@ export default function CustomerManagementPage () {
 
                 <h2> Customer Management </h2>
                 <form action ="" >
+
+                <table>
+
+                <tr>
+
+                <td>
                     <p>
                         <input type ="text" name ="employeeid" placeholder ='Employee Id' required />
                     </p>
+
+                    </td>
+
+
+                    <td>
                     <p>
                         <input type ="text" name ="employeename" placeholder ='Employee Name' required />
                     </p>
+
+                    </td>
                     <div className ="text-center m-5-auto selectbox" style = {{
                 display : 'flex' ,
                 alignItems : 'center' ,
                 justifyContent : 'center' ,
                 flexDirection : 'column'
             }} >
+
+            <td>
                         <Form.Select className='selectboxes'>
 
                         <option value="" disabled selected>Department</option>
@@ -50,21 +65,34 @@ export default function CustomerManagementPage () {
 
                         </Form.Select>
 
+</td>
 
+
+<td>
                         <Form.Select className='selectboxes'>
 
                         <option value="" disabled selected>Gender</option>
                         {gender. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
                         </Form.Select>
+
+
+                        </td>
+
+
+                        <td>
                         <Form.Select className='selectboxes'>
 
                         <option value="" disabled selected>Designation</option>
                         {designation. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
                         </Form.Select>
+
+                        </td>
                     </div>
 
+
+<td>
                     <p style={{marginTop:".6rem"}}>
 
                     <FloatingLabel controlId="floatingSelect" label="Date of Birth">
@@ -76,6 +104,11 @@ export default function CustomerManagementPage () {
 
                     </p>
 
+                    </td>
+
+
+                    <td>
+
                     <p>
                     <FloatingLabel controlId="floatingSelect" label="Date of Joining">
                         <Form.Control type="date" name='date_of_joining'
@@ -84,6 +117,12 @@ export default function CustomerManagementPage () {
                         />
                     </FloatingLabel>
                    </p>
+
+                   </td>
+
+</tr>
+
+</table>
 
 
                     <p>

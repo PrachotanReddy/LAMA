@@ -15,36 +15,74 @@ export default function CardManagementPage() {
             background:'#222'
           }}>
             <h2>CardManagementPage</h2>
-            <form action="/home">
+            <form action="">
+
+
+            <table>
+
+            <tr>
+
+            <td>
                 <p>
                     <input type="text" name="Loanid" placeholder='Loan ID' required />
                 </p>
-                <p> Loan Type
+</td>
+
+                <div className ="text-center m-5-auto selectbox" style = {{
+                                display : 'flex' ,
+                                alignItems : 'center' ,
+                                justifyContent : 'center' ,
+                                flexDirection : 'column'
+                            }} >
 
 
-                                        <select>
 
+<td>
+                            <Form.Select className='selectboxes'>
+
+
+
+
+<option value="" disabled selected>Loan Type</option>
 
                                             {loantype. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
-                                         </select>
-                                    </p>
+
+
+
+                                    </Form.Select>
+
+                                    </td>
+
+
+                                    <td>
                 <p>
 
 
-                <p> Duration
 
 
-                                                        <select>
+<Form.Select className='selectboxes'>
 
 
+<option value="" disabled selected>Duration</option>
                                                             {duration. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
 
-                                                         </select>
-                                                    </p>
+                                                        </Form.Select>
+
+
+                                                        </td>
+
+
+                                                        </tr>
+
+                                                        </table>
+
                                   <p>
                                                        <button id ="sub_btn" type ="submit" > Add Data </button>
                                                    </p>
+
+
+                                                   </div>
 
             </form>
         </div>
