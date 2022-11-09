@@ -2,9 +2,13 @@ package com.capstone.LoanAdminManagement.Controller;
 
 import com.capstone.LoanAdminManagement.Model.ItemsMasterData;
 import com.capstone.LoanAdminManagement.Model.LoanCardData;
+import com.capstone.LoanAdminManagement.Repository.ItemsRepository;
 import com.capstone.LoanAdminManagement.Service.ItemsService;
 import com.capstone.LoanAdminManagement.Service.LoanCardService;
+import com.capstone.LoanAdminManagement.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +17,19 @@ import java.util.List;
 public class ItemsController {
     @Autowired
     ItemsService service;
+    @Autowired
+    ItemsRepository repo;
     @DeleteMapping("/deleteItem/{iid}")
-    public String deleteItem(@PathVariable("iid")int iid){
-        service.deleteItem(iid);
-        return "item deleted";
+    public ResponseEntity<HttpStatus> deleteItem(@PathVariable("iid")int iid){
+        try{
+            ItemsMasterData item = repo.findById(iid)
+                    .orElseThrow(() -> new ResourceNotFoundException("Item does not exist with id: " + iid));
+            service.deleteItem(iid);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/allItems")
