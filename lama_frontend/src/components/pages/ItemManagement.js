@@ -131,6 +131,25 @@ export default function ItemManagementPage() {
                 </p>
             </form >
 
+
+            <table>
+            <tr>
+            <th>Item ID</th>
+
+            <th>Item Description</th>
+
+            <th>Issue Status</th>
+
+            <th>Item Category</th>
+
+            <th>Item Make</th>
+            <th>Item Value</th>
+
+            </tr>
+
+            
+            </table>
+
         </div>
 
 

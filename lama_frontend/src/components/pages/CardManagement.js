@@ -87,6 +87,21 @@ export default function CardManagementPage() {
                 </p>
             </form >
 
+
+            <table>
+            <tr>
+
+            <th>Loan ID</th>
+
+            <th>Loan Type</th>
+
+            <th>Duration</th>
+
+            </tr>
+
+
+            </table>
+
         </div>
 
 
