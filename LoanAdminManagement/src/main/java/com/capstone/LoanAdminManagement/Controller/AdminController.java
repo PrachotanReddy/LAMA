@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capstone.LoanAdminManagement.Model.AdminData;
 import com.capstone.LoanAdminManagement.Repository.AdminRepository;
-import com.capstone.LoanAdminManagement.Service.AdminServiceImpl;
+import com.capstone.LoanAdminManagement.Service.AdminService;
 import com.capstone.LoanAdminManagement.exception.ResourceNotFoundException;
 @CrossOrigin("*")
 @RestController
 
 public class AdminController {
-	
+	 	@Autowired AdminService AdminService;
+	  
+	  @Autowired AdminRepository Repo;
 	
 	  @GetMapping("/")
 	    public String showLoginPage(){
@@ -26,13 +28,10 @@ public class AdminController {
 	    }
 	  
 	  @GetMapping("/menu")
-	    public String showMenuPage(){
-		  
-	        return "menupage";
+	   public String showMenuPage() {
+		  return "menu";
 	    }
-	  @Autowired AdminServiceImpl AdminService;
-	  
-	  @Autowired AdminRepository Repo;
+	 
 	  
 	  @GetMapping("/login")
 	  public void Login(@RequestBody AdminData Admin,HttpServletResponse response) throws IOException {
@@ -46,10 +45,21 @@ public class AdminController {
 	            System.out.println(e);
 	        }
 				   
-       	if (AdminService.checkCredentials(Admin))   response.sendRedirect("/menu");
+       	if (AdminService.checkCredentials(Admin))
+       		{
+       			Admin.setLoggedin(true);
+       			response.setContentType("application/json");
+       			response.sendRedirect("/menu");
+       		}
        	else 
        		response.sendRedirect("/");
 	  }
+	  @GetMapping("/logout")
+	  public void Logout(@RequestBody AdminData Admin,HttpServletResponse response) throws IOException {
+		  	Admin.setLoggedin(false);
+ 			response.sendRedirect("/");
+	  }
+	  
 	  
 } 
   

@@ -23,5 +23,10 @@ public class AdminServiceImpl implements AdminService{
     	AdminData Admin1 = repo.findByadminUserId(admin.getadminUserId());
     	return (Admin1.getadminPassword().equals(admin.getadminPassword()));
     }
-    
+     
+    @Override
+    public boolean checkloggedin(AdminData admin) {
+    	return (admin.isLoggedin());
+    }
+   
 }
