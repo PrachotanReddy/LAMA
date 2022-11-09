@@ -21,7 +21,7 @@ public class AdminServiceImpl implements AdminService{
     @Override
     public boolean checkCredentials(AdminData admin) {
     	AdminData Admin1 = repo.findByadminUserId(admin.getadminUserId());
-    	return (admin.getadminPassword().equals(Admin1.getadminPassword()));
+    	return (Admin1.getadminPassword().equals(admin.getadminPassword()));
     }
     
 }

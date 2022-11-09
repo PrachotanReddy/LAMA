@@ -46,7 +46,7 @@ public class AdminController {
 	            System.out.println(e);
 	        }
 				   
-       	if (AdminService.checkCredentials(login))   response.sendRedirect("/menu");
+       	if (AdminService.checkCredentials(Admin))   response.sendRedirect("/menu");
        	else 
        		response.sendRedirect("/");
 	  }
