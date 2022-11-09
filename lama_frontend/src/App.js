@@ -5,6 +5,8 @@ import LandingPage from './components/pages/LandingPage'
 import AdminLoginPage from './components/pages/AdminLoginPage'
 import AdminDashboard from './components/pages/UserMenu'
 import CustomerManagementPage from './components/pages/CustomerManagement'
+import ItemManagementPage from './components/pages/ItemManagement'
+import CardManagementPage from './components/pages/CardManagement'
 
 import './App.css'
 
@@ -17,6 +19,8 @@ export default function App() {
                     <Route path="/login" element={ <AdminLoginPage/> } />
                     <Route path="/dashboard" element={ <AdminDashboard/> } />
                     <Route path="/customermanagement" element={ <CustomerManagementPage/> } />
+                    <Route path="/itemmanagement" element={ <ItemManagementPage/> } />
+                    <Route path="/cardmanagement" element={ <CardManagementPage/> } />
                 </Routes>
                 <Footer />
             </div>

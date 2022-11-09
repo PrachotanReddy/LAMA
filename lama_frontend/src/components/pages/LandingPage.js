@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import '../../App.css'
 
 export default function LandingPage() {
-    return (
-        <div
+  return (
+    <div
       style={{
         display: 'flex',
         alignItems: 'center',
@@ -17,11 +17,11 @@ export default function LandingPage() {
       }}
     >
       <h1 className="main-title text-center">LAMA</h1>
-            <p className="main-para text-center">GIS Global</p>
-                <Link to="/login">
-                    <button className="primary-button">Admin Log In</button>
-                </Link>
-            
+      <p className="main-para text-center">GIS Global</p>
+      <Link to="/login">
+        <button className="primary-button">Admin Log In</button>
+      </Link>
+
     </div>
-    )
+  )
 }

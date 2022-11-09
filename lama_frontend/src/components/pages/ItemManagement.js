@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import '../../App.css'
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import Form from 'react-bootstrap/Form';
 
 export default function ItemManagementPage() {
     return (
@@ -12,125 +16,125 @@ export default function ItemManagementPage() {
             width: "100%",
             height: "100vh",
             flexDirection: 'column',
-            background:'#222'
-          }}>
-            <h2>ItemManagementPage</h2>
+            background: '#222'
+        }}>
+            <h2>Item Management</h2>
             <form action="">
 
-            <table>
 
-            <tr>
 
-            <td>
+
+
+
                 <p>
                     <input type="text" name="Itemid" placeholder='Item ID' required />
                 </p>
 
-</td>
 
 
-<td>
+
+
                 <p>
-                                    <input type="text" name="Itemdescription" placeholder='Item Description' required />
-                                </p>
-
-</td>
-
- <div className ="text-center m-5-auto selectbox" style = {{
-                display : 'flex' ,
-                alignItems : 'center' ,
-                justifyContent : 'center' ,
-                flexDirection : 'column'
-            }} >
+                    <input type="text" name="Itemdescription" placeholder='Item Description' required />
+                </p>
 
 
 
-
-<td>
-<Form.Select className='selectboxes'>
-
-
-
-                                  <option value="" disabled selected>Issue Status</option>
-
-
-                                            {issuestatus. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
+                <div className="text-center m-5-auto selectbox" style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column'
+                }} >
 
 
 
 
-            </Form.Select>
+
+                    <Form.Select className='selectboxes'>
 
 
-            </td>
 
-            <td>
+                        <option value="" disabled selected>Issue Status</option>
 
-                                    <Form.Select className='selectboxes'>
+
+                        {issuestatus.map((option) => (<option value={option.value} > {option.label} </option>))}
+
+
+
+
+                    </Form.Select>
 
 
 
 
 
 
-                                            <option value="" disabled selected>Item Category</option>
-
-
-                                                            {itemcategory. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
+                    <Form.Select className='selectboxes'>
 
 
 
 
 
- </Form.Select>
 
-</td>
-
+                        <option value="" disabled selected>Item Category</option>
 
 
-<td>
-                  <p>
-                                      <input type="text" name="Itemvalue" placeholder='Item Value' required />
-                                  </p>
-
-</td>
-
-
-<td>
-
-                                  <Form.Select className='selectboxes'>
+                        {itemcategory.map((option) => (<option value={option.value} > {option.label} </option>))}
 
 
 
 
 
-                                                                            <option value="" disabled selected>Item Make</option>
+                    </Form.Select>
 
-
-                                                                                     {itemsmake. map ((option) => ( <option value = {option. value } > {option. label } </option> ))}
-
-
-
-
- </Form.Select>
-
- </td>
-
-  </tr>
-
-</table>
+                    <Form.Select className='selectboxes'>
 
 
 
-                                  <p>
-                                                       <button id ="sub_btn" type ="submit" > Add Data </button>
-                                                   </p>
 
 
-                                                   </div>
+                        <option value="" disabled selected>Item Make</option>
 
-            </form>
+
+                        {itemsmake.map((option) => (<option value={option.value} > {option.label} </option>))}
+
+
+
+
+                    </Form.Select>
+
+
+
+
+
+                    <p>
+                        <input type="text" name="Itemvalue" placeholder='Item Value' required />
+                    </p>
+
+
+
+
+
+
+
+
+                </div >
+
+
+
+
+
+
+                <p>
+                    <button id="sub_btn" type="submit" > Add Data </button>
+                </p>
+            </form >
+
         </div>
+
+
+
     )
 }
 
@@ -138,69 +142,73 @@ export default function ItemManagementPage() {
 const issuestatus = [
 
 
-    { label : "Yes" ,
-    value : "yes" } ,
+    {
+        label: "Yes",
+        value: "yes"
+    },
 
 
     {
-    label : "No",
+        label: "No",
 
-    value : "no"
+        value: "no"
 
     }
 
 
 
-] ;
+];
 
 
 
 const itemcategory = [
 
 
-    { label : "Furniture" ,
-    value : "furniture" } ,
+    {
+        label: "Furniture",
+        value: "furniture"
+    },
 
     {
 
 
-        label : "Stationary" ,
+        label: "Stationary",
 
-        value : "stationary"
-    }
+        value: "stationary"
+    },
 
 
     {
-    label : "Crockery",
-    value: "crockery"
+        label: "Crockery",
+        value: "crockery"
 
     }
 
 
 
-] ;
+];
 
 const itemsmake = [
 
-{
+    {
 
-label : "Wodden",
+        label: "Wodden",
 
-value : "wodden"
-},
+        value: "wodden"
+    },
 
-{
-label : "Glass",
+    {
+        label: "Glass",
 
-value : "glass"
+        value: "glass"
 
-},
+    },
 
-{
-label : "Plastic",
+    {
+        label: "Plastic",
 
-value : "plastic"
+        value: "plastic"
 
-}
+    }
 
 ];
