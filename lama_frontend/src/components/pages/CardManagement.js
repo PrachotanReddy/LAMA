@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React,{useState} from 'react'
+import * as utils from '../../services/requests'
+import { Link,useNavigate } from 'react-router-dom'
 
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
@@ -8,7 +9,95 @@ import Form from 'react-bootstrap/Form';
 
 import '../../App.css'
 
-export default function CardManagementPage() {
+
+export default function CardManagement() {
+
+
+const loantype = [
+
+
+    {
+        label: "Furniture",
+        value: "furniture"
+    },
+
+    {
+
+
+        label: "Stationary",
+
+        value: "stationary"
+    },
+
+    {
+        label: "Crockery",
+        value: "crockery"
+
+    }
+
+
+
+];
+
+
+
+const durationF =
+
+    [
+
+
+        {
+            label: "1",
+            value: 1
+        },
+        {
+            label: "2",
+            value: 2
+        },
+        {
+            label: "3",
+            value: 3
+        },
+        {
+            label: "4",
+            value: 4
+        },
+        {
+            label: "5",
+            value: 5
+        }
+
+
+
+
+    ]
+  const navigate = useNavigate();
+
+  const route_ = (path) => {
+    navigate(path);
+  };
+
+  let [loanId, setLoanId] = useState(0);
+  let [loanType, setLoanType] = useState("");
+  let [duration, setDuration] = useState(0);
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    let loanCard= {
+        loanId : loanId,
+        loanType : loanType,
+        duration : duration
+    };
+
+  console.log(JSON.stringify(loanCard));
+  utils
+    .post("/addLoanCard", loanCard)
+    .then((response) => {
+     console.log(response.id);
+    })
+  };
+
     return (
         <div className="text-center m-5-auto" style={{
             display: 'flex',
@@ -20,7 +109,7 @@ export default function CardManagementPage() {
             background: '#222'
         }}>
             <h2>Card Management</h2>
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
 
 
 
@@ -29,7 +118,7 @@ export default function CardManagementPage() {
 
 
                 <p>
-                    <input type="text" name="Loanid" placeholder='Loan ID' required />
+                    <input type="number" name="Loanid" placeholder='Loan ID' onChange={(e) => setLoanId(e.target.value)}required />
                 </p>
 
 
@@ -43,12 +132,12 @@ export default function CardManagementPage() {
 
 
 
-                    <Form.Select className='selectboxes'>
+                    <Form.Select className='selectboxes' onChange={(e) => setLoanType(e.target.value)}>
 
 
 
 
-                        <option value="" disabled selected>Loan Type</option>
+                        <option value=""  disabled selected>Loan Type</option>
 
                         {loantype.map((option) => (<option value={option.value} > {option.label} </option>))}
 
@@ -66,11 +155,11 @@ export default function CardManagementPage() {
 
 
 
-                        <Form.Select className='selectboxes'>
+                        <Form.Select className='selectboxes' onChange={(e) => setDuration(e.target.value)}>
 
 
-                            <option value="" disabled selected>Duration</option>
-                            {duration.map((option) => (<option value={option.value} > {option.label} </option>))}
+                            <option value=""  disabled selected>Duration</option>
+                            {durationF.map((option) => (<option value={option.value} > {option.label} </option>))}
 
                         </Form.Select>
 
@@ -108,63 +197,3 @@ export default function CardManagementPage() {
 
     )
 }
-
-
-const loantype = [
-
-
-    {
-        label: "Furniture",
-        value: "furniture"
-    },
-
-    {
-
-
-        label: "Stationary",
-
-        value: "stationary"
-    },
-
-    {
-        label: "Crockery",
-        value: "crockery"
-
-    }
-
-
-
-];
-
-
-
-const duration =
-
-    [
-
-
-        {
-            label: "1",
-            value: "1"
-        },
-        {
-            label: "2",
-            value: "2"
-        },
-        {
-            label: "3",
-            value: "3"
-        },
-        {
-            label: "4",
-            value: "4"
-        },
-        {
-            label: "5",
-            value: "5"
-        }
-
-
-
-
-    ]
