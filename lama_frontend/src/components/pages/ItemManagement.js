@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import * as utils from '../../services/requests'
 import { Link,useNavigate } from 'react-router-dom'
-
+import Login from './AdminLoginPage'
 import '../../App.css'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
@@ -43,6 +43,11 @@ export default function ItemManagementPage() {
      console.log(response.id);
     })
   };
+  if (sessionStorage.getItem("user") === null) {
+    window.alert("Unauthorized. Please Login")
+        
+    return < Login/>;
+  }
     return (
         <div className="text-center m-5-auto" style={{
             display: 'flex',
@@ -184,7 +189,14 @@ export default function ItemManagementPage() {
 
             
             </table>
-
+            <div>
+            <Link to="/dashboard">
+                <button className="primary-button">Menu</button>
+            </Link>
+            <Link to="/logout">
+                <button className="primary-button">Logout</button>
+            </Link>
+            </div>
         </div>
 
 

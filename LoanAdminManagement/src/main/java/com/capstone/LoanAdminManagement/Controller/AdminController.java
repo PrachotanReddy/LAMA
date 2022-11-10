@@ -35,8 +35,11 @@ public class AdminController {
 				   
        	if (AdminService.checkCredentials(Admin))
        		{
+       		if (Admin.isLoggedin()) 	return "Already Logged in";
+       		else {
        			Admin.setLoggedin(true);
        			return "Login Successful";
+       		}
        		}
        	else 
        		return "Login Unsuccessful";

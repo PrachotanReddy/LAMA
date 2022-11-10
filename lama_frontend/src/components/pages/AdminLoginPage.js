@@ -26,6 +26,11 @@ let handleSubmit = (e) => {
         sessionStorage.setItem("user", UserId);
         route_("/dashboard");
       }
+      else if (response.data === "Already Logged in") {
+        window.alert("Already Logged in");
+        sessionStorage.setItem("user", UserId);
+        route_("/dashboard");
+      }
        else {
         window.alert("Invalid credentials");
         route_("/login");

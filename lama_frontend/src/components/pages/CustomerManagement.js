@@ -143,7 +143,14 @@ export default function CustomerManagementPage() {
 
 
             </table>
-
+            <div>
+            <Link to="/dashboard">
+                <button className="primary-button">Menu</button>
+            </Link>
+            <Link to="/logout">
+                <button className="primary-button">Logout</button>
+            </Link>
+            </div>
 
         </div>
     )
