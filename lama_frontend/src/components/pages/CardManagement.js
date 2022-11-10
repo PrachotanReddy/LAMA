@@ -80,6 +80,7 @@ const durationF =
   let [loanId, setLoanId] = useState(0);
   let [loanType, setLoanType] = useState("");
   let [duration, setDuration] = useState(0);
+  let [loanDeleteId, setLoanDeleteId] = useState(0);
 
   let handleSubmit = (e) => {
     e.preventDefault();
@@ -93,6 +94,18 @@ const durationF =
   console.log(JSON.stringify(loanCard));
   utils
     .post("/addLoanCard", loanCard)
+    .then((response) => {
+     console.log(response.id);
+    })
+  };
+  let handleDelete = (e) => {
+    e.preventDefault();
+
+    let DeleteId= parseInt(loanDeleteId);
+
+  console.log(JSON.stringify(DeleteId));
+  utils
+    .Delete(`/deleteLoanCard/${DeleteId}`)
     .then((response) => {
      console.log(response.id);
     })
@@ -180,8 +193,15 @@ const durationF =
                 </p>
             </form >
 
+            <form action="" onSubmit={handleDelete}>
 
-            <table>
+                <input type="number" name="Loanid" placeholder='Loan ID' value={loanDeleteId} onChange={(e) => setLoanDeleteId(e.target.value)} required />
+            <p>
+                    <button id="sub_btn" type="submit" > Delete </button>
+                </p>
+            </form>
+
+            {/* <table>
             <tr>
 
             <th>Loan ID</th>
@@ -193,7 +213,7 @@ const durationF =
             </tr>
 
 
-            </table>
+            </table> */}
 
             <div>
             <Link to="/dashboard">

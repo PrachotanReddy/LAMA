@@ -22,6 +22,8 @@ export default function ItemManagementPage() {
   let [itemCategory, setItemCategory] = useState("");
   let [itemMake, setItemMake] = useState("");
   let [itemValue, setItemValue] = useState("");
+  let [itemDeleteId, setItemDeleteId] = useState(0);
+
 
   let handleSubmit = (e) => {
     e.preventDefault();
@@ -43,6 +45,18 @@ export default function ItemManagementPage() {
      console.log(response.id);
     })
   };
+  let handleDelete = (e) => {
+    e.preventDefault();
+
+    let DeleteId= parseInt(itemDeleteId);
+
+  console.log(JSON.stringify(DeleteId));
+  utils
+    .Delete(`/deleteItem/${DeleteId}`)
+    .then((response) => {
+     console.log(response.id);
+    })
+  };
   if (sessionStorage.getItem("user") === null) {
     window.alert("Unauthorized. Please Login")
     return < Login/>;
@@ -57,6 +71,14 @@ export default function ItemManagementPage() {
             flexDirection: 'column',
             background: '#222'
         }}>
+             <div>
+            <Link to="/dashboard">
+                <button className="primary-button">Menu</button>
+            </Link>
+            <Link to="/logout">
+                <button className="primary-button">Logout</button>
+            </Link>
+            </div>
             <h2>Item Management</h2>
             <form action="" onSubmit={handleSubmit}>
 
@@ -169,8 +191,14 @@ export default function ItemManagementPage() {
                     <button id="sub_btn" type="submit" > Add Data </button>
                 </p>
             </form >
+            <form action="" onSubmit={handleDelete}>
 
-
+<input type="number" name="itemid" placeholder='item ID' value={itemDeleteId} onChange={(e) => setItemDeleteId(e.target.value)} required />
+<p>
+    <button id="sub_btn" type="submit" > Delete </button>
+</p>
+</form>
+{/* 
             <table>
             <tr>
             <th>Item ID</th>
@@ -187,15 +215,8 @@ export default function ItemManagementPage() {
             </tr>
 
             
-            </table>
-            <div>
-            <Link to="/dashboard">
-                <button className="primary-button">Menu</button>
-            </Link>
-            <Link to="/logout">
-                <button className="primary-button">Logout</button>
-            </Link>
-            </div>
+            </table> */}
+           
         </div>
 
 

@@ -12,4 +12,8 @@ const get = (url, data) => {
   return axios.get(base_url + url,{params: data});
 };
 
-export { get, post };
+const Delete = (url) => {
+  return axios.delete(base_url+url);
+}
+
+export { get, post , Delete };
