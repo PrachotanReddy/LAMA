@@ -118,7 +118,7 @@ const durationF =
 
 
                 <p>
-                    <input type="number" name="Loanid" placeholder='Loan ID' onChange={(e) => setLoanId(e.target.value)}required />
+                    <input type="number" name="Loanid" placeholder='Loan ID' onChange={(e) => setLoanId(e.target.value)} required />
                 </p>
 
 

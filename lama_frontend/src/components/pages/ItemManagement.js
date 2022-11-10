@@ -1,5 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React,{useState} from 'react'
+import * as utils from '../../services/requests'
+import { Link,useNavigate } from 'react-router-dom'
 
 import '../../App.css'
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
@@ -8,6 +9,40 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Form from 'react-bootstrap/Form';
 
 export default function ItemManagementPage() {
+  const navigate = useNavigate();
+
+  const route_ = (path) => {
+    navigate(path);
+  };
+
+  let [itemId, setItemId] = useState(0);
+  let [itemDescription, setItemDescription] = useState("");
+  let [issueStatus, setIssueStatus] = useState("");
+  let [issueCategory, setIssueCategory] = useState("");
+  let [itemCategory, setItemCategory] = useState("");
+  let [itemMake, setItemMake] = useState("");
+  let [itemValue, setItemValue] = useState("");
+
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    let itemCard= {
+        itemId : itemId,
+        itemDescription : itemDescription,
+        issueStatus : issueStatus,
+        issueCategory : issueCategory,
+        itemCategory : itemCategory,
+        itemMake : itemMake,
+        itemValue : itemValue
+    };
+
+  console.log(JSON.stringify(itemCard));
+  utils
+    .post("/addItem", itemCard)
+    .then((response) => {
+     console.log(response.id);
+    })
+  };
     return (
         <div className="text-center m-5-auto" style={{
             display: 'flex',
@@ -19,7 +54,7 @@ export default function ItemManagementPage() {
             background: '#222'
         }}>
             <h2>Item Management</h2>
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
 
 
 
@@ -27,7 +62,7 @@ export default function ItemManagementPage() {
 
 
                 <p>
-                    <input type="text" name="Itemid" placeholder='Item ID' required />
+                    <input type="number" name="Itemid" placeholder='Item ID' onChange={(e) => setItemId(e.target.value)} required />
                 </p>
 
 
@@ -35,7 +70,7 @@ export default function ItemManagementPage() {
 
 
                 <p>
-                    <input type="text" name="Itemdescription" placeholder='Item Description' required />
+                    <input type="text" name="Itemdescription" placeholder='Item Description' onChange={(e) => setItemDescription(e.target.value)} required />
                 </p>
 
 
@@ -51,7 +86,7 @@ export default function ItemManagementPage() {
 
 
 
-                    <Form.Select className='selectboxes'>
+                    <Form.Select className='selectboxes' onChange={(e) => setIssueStatus(e.target.value)}>
 
 
 
@@ -70,7 +105,7 @@ export default function ItemManagementPage() {
 
 
 
-                    <Form.Select className='selectboxes'>
+                    <Form.Select className='selectboxes' onChange={(e) => setItemCategory(e.target.value)}>
 
 
 
@@ -88,7 +123,7 @@ export default function ItemManagementPage() {
 
                     </Form.Select>
 
-                    <Form.Select className='selectboxes'>
+                    <Form.Select className='selectboxes' onChange={(e) => setItemMake(e.target.value)}>
 
 
 
@@ -109,7 +144,7 @@ export default function ItemManagementPage() {
 
 
                     <p>
-                        <input type="text" name="Itemvalue" placeholder='Item Value' required />
+                        <input type="number" name="Itemvalue" placeholder='Item Value' onChange={(e) => setItemValue(e.target.value)} required />
                     </p>
 
 
