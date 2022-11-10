@@ -7,6 +7,7 @@ import AdminDashboard from './components/pages/UserMenu'
 import CustomerManagementPage from './components/pages/CustomerManagement'
 import ItemManagementPage from './components/pages/ItemManagement'
 import CardManagementPage from './components/pages/CardManagement'
+import LogoutPage from './components/pages/Logout'
 
 import './App.css'
 
@@ -17,6 +18,7 @@ export default function App() {
                 <Routes>
                     <Route exact path="/" element={ <LandingPage/> } />
                     <Route path="/login" element={ <AdminLoginPage/> } />
+                    <Route path="/logout" element={ <LogoutPage/> } />
                     <Route path="/dashboard" element={ <AdminDashboard/> } />
                     <Route path="/customermanagement" element={ <CustomerManagementPage/> } />
                     <Route path="/itemmanagement" element={ <ItemManagementPage/> } />

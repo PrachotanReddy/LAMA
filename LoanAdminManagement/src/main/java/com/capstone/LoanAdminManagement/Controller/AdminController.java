@@ -1,13 +1,11 @@
 package com.capstone.LoanAdminManagement.Controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capstone.LoanAdminManagement.Model.AdminData;
@@ -21,21 +19,11 @@ public class AdminController {
 	 	@Autowired AdminService AdminService;
 	  
 	  @Autowired AdminRepository Repo;
-	
-	  @GetMapping("/")
-	    public String showLoginPage(){
-	        return "loginPage";
-	    }
-	  
-	  @GetMapping("/menu")
-	   public String showMenuPage() {
-		  return "menu";
-	    }
 	 
 	  
-	  @GetMapping("/login")
-	  public void Login(@RequestBody AdminData Admin,HttpServletResponse response) throws IOException {
-		  AdminData login = Repo.findByadminUserId(Admin.getadminUserId());
+	  @PostMapping("/login")
+	  public String Login(@RequestBody(required = false) AdminData Admin) {
+		  AdminData login = Repo.findByadminUserId(Admin.getadminUserId() );
 				 
 		  try{
 			  		  AdminData admin = Repo.findById(login.getId())
@@ -48,16 +36,17 @@ public class AdminController {
        	if (AdminService.checkCredentials(Admin))
        		{
        			Admin.setLoggedin(true);
-       			response.setContentType("application/json");
-       			response.sendRedirect("/menu");
+       			return "Login Successful";
        		}
        	else 
-       		response.sendRedirect("/");
-	  }
+       		return "Login Unsuccessful";
+   	  }
+	  
 	  @GetMapping("/logout")
-	  public void Logout(@RequestBody AdminData Admin,HttpServletResponse response) throws IOException {
+	  public String Logout(@RequestParam String adminUserId) {
+		  	AdminData Admin = Repo.findByadminUserId(adminUserId);
 		  	Admin.setLoggedin(false);
- 			response.sendRedirect("/");
+		  	return "Logout successful";
 	  }
 	  
 	  
