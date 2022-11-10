@@ -45,7 +45,6 @@ export default function ItemManagementPage() {
   };
   if (sessionStorage.getItem("user") === null) {
     window.alert("Unauthorized. Please Login")
-        
     return < Login/>;
   }
     return (
